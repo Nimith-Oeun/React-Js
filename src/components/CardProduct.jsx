@@ -1,56 +1,23 @@
 import React from 'react'
 
-export default function CardProduct() {
+export default function CardProduct({img,handleClick}) {
     return (
         <>
-            <h2 className='text-4xl font-semibold text-gray-900 dark:text-white p-5'>Product</h2>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="grid gap-4">
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt=""/>
-                    </div>
-                </div>
-                <div className="grid gap-4">
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt=""/>
-                    </div>
-                </div>
-                <div className="grid gap-4">
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt=""/>
-                    </div>
-                </div>
-                <div className="grid gap-4">
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""/>
+            <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 " onClick={handleClick}>
+                <a href="#">
+                    <img className="p-8 rounded-t-lg h-[350px] object-cover" src={img} alt="product image" />
+                </a>
+                <div className="px-5 pb-5">
+                    <a href="#">
+                        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                    </a>
+                    <div className="flex items-center justify-between">
+                        <span className="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+                        <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
                     </div>
                 </div>
             </div>
+
 
         </>
     )

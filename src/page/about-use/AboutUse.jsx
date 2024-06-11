@@ -257,42 +257,7 @@ export default function AboutUse() {
                     </div>
                 </div>
 
-                <div id="fifth" className="reveal">
-                    <h1>ECERA SYSTEM</h1>
-                    <div>
-                        <a href={{}}>
-                            <img
-                                src="https://cdn.iconscout.com/icon/premium/png-64-thumb/address-blue-circle-location-map-marker-navigation-icon-45868.png"
-                                alt=" "
-                            />
-                            <span>
-                                <h3>Address</h3>
-                                <p>4813 Woodland Ave Royal Oak, Michigan - 48073, USA</p>
-                            </span>
-                        </a>
-                        <a href={{}}>
-                            <img
-                                src="https://cdn.iconscout.com/icon/free/png-64/phone-2666572-2212584.png"
-                                alt=" "
-                            />
-                            <span>
-                                <h3>Phone</h3>
-                                <p>+1 248 672 1972</p>
-                            </span>
-                        </a>
-                        <a href={{}}>
-                            <img
-                                src="https://cdn.iconscout.com/icon/free/png-64/gmail-2489176-2082900.png"
-                                alt=" "
-                            />
-                            <span>
-                                <h3>E-mail</h3>
-                                <p>Sales@Ecerasystem.com</p>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </main>
+            </main> 
         </div>
     );
 }

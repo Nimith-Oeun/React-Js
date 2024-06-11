@@ -5,8 +5,8 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-
 export default function Foolters() {
     return (
         <>
-            <Footer container>
-                <div className="w-[90%] m-auto">
+            <Footer container className='bg-slate-100'>
+                <div className="w-[77%] m-auto">
                     <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
                         <div>
                             <Footer.Brand
@@ -16,11 +16,11 @@ export default function Foolters() {
                                 name="Flowbite"
                             />
                         </div>
-                        <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+                        <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6 text-gray-600">
                             <div>
                                 <Footer.Title title="about" />
-                                <Footer.LinkGroup col>
-                                    <Footer.Link href="#">Flowbite</Footer.Link>
+                                <Footer.LinkGroup col className=' text-gray-600'>
+                                    <Footer.Link href="#" >Flowbite</Footer.Link>
                                     <Footer.Link href="#">Tailwind CSS</Footer.Link>
                                 </Footer.LinkGroup>
                             </div>

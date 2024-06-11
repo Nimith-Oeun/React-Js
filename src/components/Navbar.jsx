@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Navbars() {
     return (
         <>
-            <Navbar fluid rounded>
+            <Navbar fluid rounded className='bg-slate-100 w-[75%] m-auto'>
                 <Navbar.Brand href="https://flowbite-react.com">
                    
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
@@ -31,7 +31,7 @@ export default function Navbars() {
                     <Navbar.Toggle />
                 </div>
                 <Navbar.Collapse>
-                    <Navbar.Link href="#" active>
+                    <Navbar.Link as={Link} to={'/'} active>
                         Home
                     </Navbar.Link>
                     <Navbar.Link as={Link} to={'/AboutUse'}>About</Navbar.Link>
