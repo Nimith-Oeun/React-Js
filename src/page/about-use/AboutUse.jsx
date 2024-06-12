@@ -43,7 +43,6 @@ export default function AboutUse() {
 
     function jet() {
         var ilake = document.getElementById("head");
-        ilake.style.top = "0px";
         ilake.style.position = "sticky";
     }
 
@@ -62,7 +61,7 @@ export default function AboutUse() {
         }
     });
     return (
-        <div classNameName="App">
+        <div className="App">
             <main>
                 <div id="front">
                     <h1 style={{ textAlign: "center" }}>Welcome,To Ecera System</h1>
