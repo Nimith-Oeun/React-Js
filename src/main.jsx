@@ -6,6 +6,7 @@ import {createBrowserRouter , RouterProvider} from "react-router-dom";
 import AboutUse from './page/about-use/AboutUse.jsx';
 import Layout from './components/layout/Layout.jsx';
 import CardDetail from './page/card-Detail/CardDetail.jsx';
+import Register from './page/auth/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,10 +27,10 @@ const router = createBrowserRouter([
       },
     ]
   },
-  // {
-  //   path: "/AboutUse",
-  //   element: <AboutUse/>
-  // },
+  {
+    path: "/Register",
+    element: <Register/>
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
