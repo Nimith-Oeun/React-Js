@@ -1,13 +1,55 @@
 import React from 'react'
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import { useState } from "react";
 import { Link } from 'react-router-dom';
 
 export default function Navbars() {
+
+    const [navbarList, setNavbarList] = useState([
+        {
+            title: "Home",
+            url: "/",
+            active: true
+        },
+        {
+            title: "About Us",
+            url: "/AboutUse",
+            active: false
+        },
+        {
+            title: "Service",
+            url: "/service",
+            active: false
+        }
+    ]);
+
+    const handleClick = (list) => {
+        console.log(list);
+        // setNavbarList((preValue) => console.log(preValue));
+
+        setNavbarList((preValue) => {
+            return preValue.map((item) => {
+                if (item.title === list.title) {
+                    return {
+                        ...item,
+                        active: true
+                    };
+                } else {
+                    return {
+                        ...item,
+                        active: false
+                    };
+                }
+            });
+        });
+    };
+
+
     return (
         <>
             <Navbar fluid rounded className='bg-slate-100 w-[75%] m-auto'>
                 <Navbar.Brand href="https://flowbite-react.com">
-                   
+
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
                 </Navbar.Brand>
                 <div className="flex md:order-2">
@@ -31,13 +73,19 @@ export default function Navbars() {
                     <Navbar.Toggle />
                 </div>
                 <Navbar.Collapse>
-                    <Navbar.Link as={Link} to={'/'} active>
-                        Home
-                    </Navbar.Link>
-                    <Navbar.Link as={Link} to={'/AboutUse'}>About</Navbar.Link>
-                    <Navbar.Link as={Link} to={'/Service'}>Services</Navbar.Link>
-                    <Navbar.Link href="#">Pricing</Navbar.Link>
-                    <Navbar.Link href="#">Contact</Navbar.Link>
+                    {navbarList.map((list, index) => {
+                        return (
+                            <Navbar.Link
+                                key={index}
+                                as={Link}
+                                to={list.url}
+                                active={list.active}
+                                onClick={() => handleClick(list)}
+                            >
+                                {list.title}
+                            </Navbar.Link>
+                        );
+                    })}
                 </Navbar.Collapse>
             </Navbar>
         </>
