@@ -34,7 +34,7 @@ export default function Register() {
           console.log(value);
         }}
       >
-        {(isSumitting) => {
+        {({isSumitting}) => {
           return (
             <Form className="w-1/2 bg-gray-100 p-[20px] rounded-md">
               <h1 className="text-2xl text-blue-800 font-semibold text-center">

@@ -20,11 +20,16 @@ export default function Navbars() {
             title: "Service",
             url: "/service",
             active: false
+        },
+        {
+            title: "Products",
+            url: "/ProductCard",
+            active: false
         }
     ]);
 
     const handleClick = (list) => {
-        console.log(list);
+        // console.log(list);
         // setNavbarList((preValue) => console.log(preValue));
 
         setNavbarList((preValue) => {

@@ -9,7 +9,7 @@ export default function Layout() {
         <header  className='bg-gray-100 '>
         <Navbars/>
         </header>
-        <main>
+        <main >
             <Outlet/>
         </main>
         <footer className='mt-[20px] '>
