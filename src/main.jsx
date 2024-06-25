@@ -10,6 +10,7 @@ import Register from './page/auth/Register.jsx';
 import { Provider } from 'react-redux'
 import { store } from './Redux/Store.jsx';
 import ProductCard from './page/productCard/ProductCard.jsx';
+import CartView from './page/cartPage/CartProduct.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "ProductCard",
         element: <ProductCard/>
+      },
+      {
+        path: "/CartProduct",
+        element: <CartView/>
       }
     ]
   },

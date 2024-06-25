@@ -2,8 +2,12 @@ import React from 'react'
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
+import { FaCartArrowDown } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 export default function Navbars() {
+
+    const total = useSelector((state)=> state.cart.total)
 
     const [navbarList, setNavbarList] = useState([
         {
@@ -25,7 +29,7 @@ export default function Navbars() {
             title: "Products",
             url: "/ProductCard",
             active: false
-        }
+        },
     ]);
 
     const handleClick = (list) => {
@@ -51,8 +55,8 @@ export default function Navbars() {
 
 
     return (
-        <>
-            <Navbar fluid rounded className='bg-slate-100 w-[75%] m-auto'>
+        <div className=' w-full fixed z-20 inline-block '>
+            <Navbar fluid rounded className='bg-slate-100'>
                 <Navbar.Brand href="https://flowbite-react.com">
 
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
@@ -91,8 +95,16 @@ export default function Navbars() {
                             </Navbar.Link>
                         );
                     })}
+                    <Navbar.Link as={Link} to={"/CartProduct"}>
+                        <div className='relative'>
+                            <span className='absolute px-1  rounded-full -top-4 -right-3 bg-pink-200'>
+                                {total}
+                            </span>
+                        </div>
+                        <FaCartArrowDown className='text-[20px]'/>
+                    </Navbar.Link>
                 </Navbar.Collapse>
             </Navbar>
-        </>
+        </div>
     )
 }

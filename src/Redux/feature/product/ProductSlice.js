@@ -3,7 +3,7 @@ import { BAS_URL } from "../../Api/Api";
 
 const initialState = {
   products: [],
-  status: "idle",
+  status: "idle" ,
   error: null,
 };
 
@@ -26,7 +26,7 @@ export const productsSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchProducts.pending, (state, action) => {
-        state.status = "Loading";
+        state.status = "loading";
       })
 
       .addCase(fetchProducts.fulfilled, (state, action) => {

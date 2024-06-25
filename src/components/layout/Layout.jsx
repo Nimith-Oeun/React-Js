@@ -12,7 +12,7 @@ export default function Layout() {
         <main >
             <Outlet/>
         </main>
-        <footer className='mt-[20px] '>
+        <footer className='mt-[47px] '>
             <Foolters/>
         </footer>
     </>
