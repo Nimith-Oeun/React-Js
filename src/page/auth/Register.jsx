@@ -1,12 +1,13 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { BAS_URL, BAS_URL2 } from "../../Redux/Api/Api";
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/ ;
 
 const validationSchema = Yup.object({
   email: Yup.string().email(" Invalid Email").required("Email is Required!!"),
-  fist_name: Yup.string().required(" Fist-Name is Required!! "),
-  Last_name: Yup.string().required(" List-Name is Required!! "),
+  first_name: Yup.string().required(" Fist-Name is Required!! "),
+  last_name: Yup.string().required(" List-Name is Required!! "),
   password1: Yup.string()
     .min(8, "Password must be at least 8 characters") //.matches(passwordRegex , "Password must be at least 8 charector, an upercase, an number, an lowercase, an spacial charecter ") if use passwordRegex we must replace on mine.
     .required("Password is Required!!"),
@@ -17,21 +18,37 @@ const validationSchema = Yup.object({
 });
 
 export default function Register() {
+
+  const handleRegister = async (value)=>{
+    console.log(value);
+    const res = await fetch (`${BAS_URL2}user/register/`,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(value)
+    })
+    const data = await res.json()
+    console.log("res",data)
+  }
   return (
     <section className="flex justify-center items-center h-screen">
       <Formik
         initialValues={{
           email: "",
-          fist_name: "",
-          Last_name: "",
+          first_name: "",
+          last_name: "",
           password1: "",
           password2: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(value ,  {setSubmitting , resetForm})  => {
+         
           setSubmitting(false);
+          handleRegister(value)
           resetForm();
-          console.log(value);
+          
+          // console.log(value);
         }}
       >
         {({isSumitting}) => {
@@ -66,21 +83,21 @@ export default function Register() {
               {/* fist-name */}
               <div className="py-[10px]">
                 <label
-                  htmlFor="fist_name"
+                  htmlFor="first_name"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Fist-Name
                 </label>
                 <Field
                   type="text"
-                  id="fist_name"
-                  name="fist_name"
-                  placeholder="Enter Fist Name"
+                  id="first_name"
+                  name="first_name"
+                  placeholder="Enter First Name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
 
                 {/* Set Errormessage */}
-                <ErrorMessage name="fist_name">
+                <ErrorMessage name="first_name">
                   {msg => <div className="text-red-700 text-[14px]">{msg}</div>}
                 </ErrorMessage>
 
@@ -89,21 +106,21 @@ export default function Register() {
               {/* last-name */}
               <div className="py-[10px]">
                 <label
-                  htmlFor="Last_name"
+                  htmlFor="last_name"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Last-Name
                 </label>
                 <Field
                   type="text"
-                  id="Last_name"
-                  name="Last_name"
+                  id="last_name"
+                  name="last_name"
                   placeholder="Enter Last Name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
 
                 {/* Set Errormessage */}
-                <ErrorMessage name="Last_name">
+                <ErrorMessage name="last_name">
                   {msg => <div className="text-red-700 text-[14px]">{msg}
                 </div>}</ErrorMessage>
 
@@ -145,7 +162,7 @@ export default function Register() {
                   id="password2"
                   name="password2"
                   placeholder="Enter Confirm Password"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
 
                 {/* Set Errormessage */}
