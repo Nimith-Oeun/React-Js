@@ -1,6 +1,7 @@
 import React from 'react'
+import Quantity from './Quantity'
 
-export default function CartV({qty,img,description,price,title}) {
+export default function CartV({qty,img,description,price,title,id}) {
     return (
         <>
             <div>
@@ -10,6 +11,7 @@ export default function CartV({qty,img,description,price,title}) {
                             <div className="flex items-center">
                                 <div className="flex-shrink-0">
                                     <img className="w-[10rem] object-cover" src={img || "No img"} alt="Neil image" />
+                                    
                                 </div>
                                 <div className="flex-1 min-w-0 ms-4">
                                     <p className="text-2xl font-bold text-gray-900 truncate text-start dark:text-white">
@@ -20,15 +22,17 @@ export default function CartV({qty,img,description,price,title}) {
                                     </p>
                                 </div>
                                 <div className="text-2xl inline-flex flex-col items-center font-bold text-gray-900 dark:text-white">
-                                    {price}$
-                                    <span className='text-[14px] font-normal'>Qty={qty}</span>
+                                    {price * qty}$
                                 </div>
                             </div>
                         </li>
-
                     </ul>
+                    <div className="flex justify-between mt-4">
+                        <Quantity qty={qty} id={id} />
+                    </div>
                 </div>
             </div>
+            <hr />
         </>
     )
 }

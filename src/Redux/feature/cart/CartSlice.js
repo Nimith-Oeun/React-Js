@@ -21,24 +21,42 @@ export const cartSlice = createSlice(
                     state.items.map((item)=>{
                         if(item.id === action.payload.id){
                             item.qty +=1
-                        }else{
-                            state.items.push(action.payload)
-                            state.total +=1
                         }
-                    })
-                       
+                    });
                 }else{
                     state.items.push(action.payload)
                     state.total +=1
                     // state.chagePrice=action.payload.price
                 }
                
-            } 
+            },
+
+            incressQuantity: (state , action)=>{
+                state.items.map((item)=>{
+                    if(item.id === action.payload.id){
+                        item.qty +=1
+                    }
+                });
+            },
+
+            decressQuantity: (state , action)=>{
+                state.items.map((item)=>{
+                    if(item.id === action.payload.id && item.qty === 1){
+                        state.items = state.items.filter(
+                            (item)=> item.id !== action.payload.id
+                        );
+                        state.total -=1
+                    }else if(item.id === action.payload.id && item.qty > 1){
+                        item.qty -=1
+
+                    }
+                });
+            }
            
         }
     }
 );
 
-export const {addToCart} = cartSlice.actions;
+export const {addToCart , incressQuantity ,decressQuantity} = cartSlice.actions;
 
 export default  cartSlice.reducer; 

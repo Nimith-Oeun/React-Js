@@ -22,6 +22,7 @@ export default function CartView() {
                                     price={itemV.price}
                                     title={itemV.title}
                                     img={itemV.image}
+                                    id={itemV.id}
                                 />
                             </>
                         )
