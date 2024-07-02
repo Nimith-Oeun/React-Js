@@ -30,6 +30,7 @@ export default function Navbars() {
             url: "/ProductCard",
             active: false
         },
+       
     ]);
 
     const handleClick = (list) => {

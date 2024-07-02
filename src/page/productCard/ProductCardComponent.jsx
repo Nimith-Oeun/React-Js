@@ -1,6 +1,7 @@
 import React from 'react'
 import { addToCart } from "../../Redux/feature/cart/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 
 export default function ProductCardComponent({qty,id,price,image,description,title}) {
     const dispatch = useDispatch();
@@ -14,13 +15,16 @@ export default function ProductCardComponent({qty,id,price,image,description,tit
     return (
         <>
             <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
-                <a href="#">
-                    <img
-                        className="p-8 rounded-t-lg h-[350px] object-cover"
-                        src={image}
-                        alt="product image"
-                    />
-                </a>
+                
+                    <Link to={`Product/${id}`}>
+                        <img
+                            className="p-8 rounded-t-lg h-[350px] object-cover"
+                            src={image}
+                            alt="product image"
+                        />
+                    </Link>
+                    
+                
                 <div className="px-5 pb-5">
                     <a href="#">
                         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white line-clamp-2">

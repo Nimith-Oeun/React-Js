@@ -11,6 +11,8 @@ import { Provider } from 'react-redux'
 import { store } from './Redux/Store.jsx';
 import ProductCard from './page/productCard/ProductCard.jsx';
 import CartView from './page/cartPage/CartProduct.jsx';
+import ProductDetail from './page/card-Detail/ProductDetail.jsx';
+import Service from './page/service/Service.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,13 +32,21 @@ const router = createBrowserRouter([
         element: <CardDetail/>
       },
       {
+        path: `Product/`,
+        element: <ProductDetail/>
+      },
+      {
         path: "ProductCard",
         element: <ProductCard/>
       },
       {
         path: "/CartProduct",
         element: <CartView/>
-      }
+      },
+      {
+        path: "/Service",
+        element: <Service/>
+      },
     ]
   },
   {

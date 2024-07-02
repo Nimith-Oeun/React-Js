@@ -5,7 +5,7 @@ export default function CardProduct({img,handleClick}) {
         <>
             <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 " onClick={handleClick}>
                 <a href="#">
-                    <img className="p-8 rounded-t-lg h-[350px] object-cover" src={img} alt="product image" />
+                    <img className="p-8 rounded-t-lg h-[350px] object-cover" src={img || "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"} alt="product image" />
                 </a>
                 <div className="px-5 pb-5">
                     <a href="#">

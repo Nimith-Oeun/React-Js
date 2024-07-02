@@ -11,6 +11,7 @@ export default function CartView() {
                 <div className="flex items-center justify-between mb-4">
                     <h5 className="text-3xl font-bold leading-none text-gray-900 dark:text-white">Shoping Cart</h5>
                 </div>
+                <hr className='mt-[30px]' />
                 <div className=' overflow-y-scroll h-[55vh] '>
                     {product.map((itemV, index) => {
                         return (

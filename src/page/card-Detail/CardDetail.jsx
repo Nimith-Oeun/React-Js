@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import { Card } from "flowbite-react";
 
+
 export default function CardDetail() {
     const [isProduct,setProduct]= useState({});
     const location = useLocation()
@@ -9,6 +10,7 @@ export default function CardDetail() {
     useEffect(() => {
         setProduct(location.state)
     },[])
+    
     
 
     return (

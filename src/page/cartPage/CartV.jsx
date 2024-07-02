@@ -10,7 +10,7 @@ export default function CartV({qty,img,description,price,title,id}) {
                         <li className="py-3 sm:py-4">
                             <div className="flex items-center">
                                 <div className="flex-shrink-0">
-                                    <img className="w-[10rem] object-cover" src={img || "No img"} alt="Neil image" />
+                                    <img className="w-[10rem]  object-cover" src={img || "https://www.svgrepo.com/show/508699/landscape-placeholder.svg" }   />
                                     
                                 </div>
                                 <div className="flex-1 min-w-0 ms-4">
