@@ -16,11 +16,11 @@ export default function Foolters() {
                                 name="Flowbite"
                             />
                         </div>
-                        <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6 text-gray-600">
+                        <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
                             <div>
                                 <Footer.Title title="about" />
-                                <Footer.LinkGroup col className=' text-gray-600'>
-                                    <Footer.Link href="#" >Flowbite</Footer.Link>
+                                <Footer.LinkGroup col className=''>
+                                    <Footer.Link className='' href="#" >Flowbite</Footer.Link>
                                     <Footer.Link href="#">Tailwind CSS</Footer.Link>
                                 </Footer.LinkGroup>
                             </div>
