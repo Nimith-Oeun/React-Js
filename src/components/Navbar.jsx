@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import { Avatar, Dropdown, Navbar, NavbarLink } from "flowbite-react";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import { FaCartArrowDown } from "react-icons/fa";
@@ -7,7 +7,9 @@ import { useSelector } from 'react-redux';
 
 export default function Navbars() {
 
-    const total = useSelector((state)=> state.cart.total)
+    const total = useSelector((state) => state.cart.total)
+    const userRespone = useSelector(state => state.user.login)
+    console.log("userRespone", userRespone);
 
     const [navbarList, setNavbarList] = useState([
         {
@@ -30,7 +32,7 @@ export default function Navbars() {
             url: "/ProductCard",
             active: false
         },
-       
+
     ]);
 
     const handleClick = (list) => {
@@ -63,6 +65,13 @@ export default function Navbars() {
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
                 </Navbar.Brand>
                 <div className="flex md:order-2">
+                    {
+                        userRespone.user ? <Link as={Link} to={"/Login"} >
+                            <button className='bg-blue-500 py-[5px] px-[10px] rounded-md mr-3 font-bold'>Logout</button>
+                        </Link> : <Link as={Link} to={"/Login"} >
+                            <button className='bg-blue-500 py-[5px] px-[10px] rounded-md mr-3 font-bold'>Login</button>
+                        </Link>
+                    }
                     <Dropdown
                         arrowIcon={false}
                         inline
@@ -102,7 +111,7 @@ export default function Navbars() {
                                 {total}
                             </span>
                         </div>
-                        <FaCartArrowDown className='text-[20px]'/>
+                        <FaCartArrowDown className='text-[20px]' />
                     </Navbar.Link>
                 </Navbar.Collapse>
             </Navbar>

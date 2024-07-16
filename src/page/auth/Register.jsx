@@ -1,8 +1,15 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { BAS_URL, BAS_URL2 } from "../../Redux/Api/Api";
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/ ;
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCreateUser, selectUser } from "../../Redux/feature/user/UserSlice";
+import { HiInformationCircle } from "react-icons/hi";
+import { Alert } from "flowbite-react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 const validationSchema = Yup.object({
   email: Yup.string().email(" Invalid Email").required("Email is Required!!"),
@@ -12,25 +19,37 @@ const validationSchema = Yup.object({
     .min(8, "Password must be at least 8 characters") //.matches(passwordRegex , "Password must be at least 8 charector, an upercase, an number, an lowercase, an spacial charecter ") if use passwordRegex we must replace on mine.
     .required("Password is Required!!"),
   password2: Yup.string()
-  .oneOf([Yup.ref("password1"),null],"password Must much!!",)
-  .required("Confirm Password is Required!!")
+    .oneOf([Yup.ref("password1"), null], "password Must much!!",)
+    .required("Confirm Password is Required!!")
   //.matches(passwordRegex , "Password must be at least 8 charector, an upercase, an number, an lowercase, an spacial charecter ")
 });
 
 export default function Register() {
+  const userRespone = useSelector(selectUser);
+  const staus = useSelector(state => state.user.status)
+  console.log("staus", staus);
+  // console.log("userRespone", userRespone);
+  const dispatch = useDispatch();
+  const navigat = useNavigate();
 
-  const handleRegister = async (value)=>{
-    console.log(value);
-    const res = await fetch (`${BAS_URL2}user/register/`,{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(value)
-    })
-    const data = await res.json()
-    console.log("res",data)
-  }
+  useEffect(() => {
+    if (userRespone.detail==="Verification e-mail sent.") {
+      navigat("/Verify")
+    }
+  }, [userRespone.detail, navigat]);
+
+  // const handleRegister = async (value)=>{
+  //   console.log(value);
+  //   const res = await fetch (`${BAS_URL2}user/register/`,{
+  //     method:"POST",
+  //     headers:{
+  //       "Content-Type":"application/json"
+  //     },
+  //     body:JSON.stringify(value)
+  //   })
+  //   const data = await res.json()
+  //   console.log("res",data)
+  // }
   return (
     <section className="flex justify-center items-center h-screen">
       <Formik
@@ -38,20 +57,20 @@ export default function Register() {
           email: "",
           first_name: "",
           last_name: "",
-          password1: "",
-          password2: "",
+          password1: "P@ssw0rd()",
+          password2: "P@ssw0rd()",
         }}
         validationSchema={validationSchema}
-        onSubmit={(value ,  {setSubmitting , resetForm})  => {
-         
-          setSubmitting(false);
-          handleRegister(value)
-          resetForm();
-          
-          // console.log(value);
+        onSubmit={(value, { setSubmitting, resetForm }) => {
+          //   setSubmitting(false);
+          dispatch(fetchCreateUser(value))
+          //  // handleRegister(value)
+            resetForm();
+
+          console.log(value);
         }}
       >
-        {({isSumitting}) => {
+        {({ isSumitting }) => {
           return (
             <Form className="w-1/2 bg-gray-100 p-[20px] rounded-md">
               <h1 className="text-2xl text-blue-800 font-semibold text-center">
@@ -122,7 +141,7 @@ export default function Register() {
                 {/* Set Errormessage */}
                 <ErrorMessage name="last_name">
                   {msg => <div className="text-red-700 text-[14px]">{msg}
-                </div>}</ErrorMessage>
+                  </div>}</ErrorMessage>
 
               </div>
 
@@ -171,9 +190,30 @@ export default function Register() {
                 </ErrorMessage>
 
               </div>
+              {
+                userRespone.email && (
+                  <Alert color="red" icon={HiInformationCircle} className="my-2">
+                    {userRespone.email}
+                  </Alert>
+                ) 
+              }
+              {
+                userRespone.detail && (
+                  <Alert color="green" icon={HiInformationCircle} className="my-2">
+                    {userRespone.detail}
+                  </Alert>
+                )
+              }
 
               <div className="p-[20px] flex justify-end">
-                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                <button
+                  type="submit"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  {
+                    staus === "loading" ? "Loading..." : "Register"
+                  }
+                </button>
               </div>
             </Form>
           )

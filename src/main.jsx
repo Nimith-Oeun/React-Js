@@ -13,6 +13,8 @@ import ProductCard from './page/productCard/ProductCard.jsx';
 import CartView from './page/cartPage/CartProduct.jsx';
 import ProductDetail from './page/card-Detail/ProductDetail.jsx';
 import Service from './page/service/Service.jsx';
+import Login from './page/auth/Login.jsx';
+import Verify from './page/auth/Verify.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
     path: "/Register",
     element: <Register/>
   },
+  {
+    path: "/Login",
+    element: <Login/>
+  },
+  {
+    path: "/Verify",
+    element: <Verify/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
